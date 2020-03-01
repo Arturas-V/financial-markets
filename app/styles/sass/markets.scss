@@ -1,0 +1,329 @@
+@import './globals/colors.scss';
+
+.markets {
+    background-color: $section-bg;
+    padding: 30px 0;
+
+    &__slider,
+    &__caption {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    &__slider {
+        position: relative;
+
+        &-prev,
+        &-next {
+            position: absolute;
+            bottom: 93px;
+            display: block;
+            height: 57px;
+            width: 40px;
+            cursor: pointer;
+
+            &::after,
+            &::before {
+                position: absolute;
+                content: "";
+                background-color: darken($grey, 15%);
+                width: 3px;
+                height: 35px;
+            }
+        }
+
+        &-prev {
+            left: -80px;
+
+            &::after {
+                transform: rotate(135deg);
+                left: 20px;
+                top: 24px;
+            }
+
+            &::before {
+                transform: rotate(45deg);
+                left: 20px;
+            }
+        }
+
+        &-next {
+            right: -80px;
+
+            &::after {
+                transform: rotate(-135deg);
+                right: 20px;
+                top: 24px;
+            }
+
+            &::before {
+                transform: rotate(-45deg);
+                right: 20px;
+            }
+        }
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: space-around;
+        width: 96%;
+        margin: 0 auto 15px;
+        border: 1px solid darken($grey, 10%);
+
+        &-item {
+            position: relative;
+            background-color: $grey;
+            color: $blue;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 14px;
+            width: 20%;
+            text-align: center;
+            padding: 10px 0;
+            border-right: 1px solid darken($grey, 10%);
+
+            &:last-child {
+                border: none;
+            }
+
+            &--selected {
+                background-color: $active;
+                color: $white;
+
+                &::after {
+                    background-color: $active;
+                    position: absolute;
+                    content: "";
+                    width: 20px;
+                    height: 20px;
+                    bottom: -10px;
+                    transform: rotate(45deg);
+                    left: 50%;
+                    margin-left: -10px;
+                }
+            }
+        }
+    }
+
+    &__container {
+        border: 1px solid darken($grey, 10%);
+        overflow: hidden;
+        height: 240px;
+        position: relative;
+    }
+
+    &__grid {
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+        transition: 1s;
+        transition-timing-function: ease;
+        left: 0px;
+        position: absolute;
+        display: flex;
+        color: $text-font;
+    }
+
+    &__market {
+        
+        &-line {
+            grid-template-columns: 37% 7% 36% 20%;
+            font-size: 15px;
+            display: grid;
+            justify-content: space-around;
+            line-height: 40px;
+            text-transform: uppercase;
+
+            &:nth-child(1) {
+                font-size: 13px;
+                text-transform: capitalize;
+            }
+
+            &:nth-child(odd) {
+                background-color: $white;
+            }
+
+            &:nth-child(even) {
+                background-color: $grey;
+            }
+        }
+
+        &-cell {
+
+            &--sub {
+                margin: 0;
+            }
+
+            &--green {
+                color: $green;
+            }
+
+            &--red {
+                color: $red;
+            }
+
+            &--blue {
+                color: $blue;
+            }
+
+            &:nth-child(1) {
+                padding-left: 60px;
+
+            }
+            
+            &:nth-child(2) {
+                text-align: center;
+            }
+
+            &:nth-child(3) {
+                text-align: center;
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+            &:nth-child(4) {
+                text-align: right;
+                padding-right: 60px;
+            }
+        }
+    }
+
+    &__caption {
+        text-align: right;
+        margin-top: 5px;
+        color: $foot-note;
+        font-size: 12px;
+    }
+
+    @media screen and (max-width: 1025px) {
+
+        &__slider,
+        &__caption {
+            max-width: 70%;
+        }
+
+        &__market-cell {
+
+            &:nth-child(1) {
+                padding-left: 20px;
+            }
+
+            &:nth-child(4) {
+                padding-right: 20px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 770px) {
+
+        &__slider,
+        &__caption {
+            max-width: 100%;
+        }
+
+        &__container {
+            height: 280px;
+        }
+
+        &__slider {
+
+            &-prev,
+            &-next {
+                top: 7px;
+                height: 40px;
+
+                &::after,
+                &::before {
+                    height: 20px;
+                    
+                }
+
+                &::after {
+                    top: 14px;
+                }
+            }
+
+            &-prev {
+                left: 0;
+            }
+
+            &-next {
+                right: 0;
+            }
+        }
+
+        &__grid {
+            -webkit-transition: 0.4s;
+            -moz-transition: 0.4s;
+            -ms-transition: 0.4s;
+            -o-transition: 0.4s;
+            transition: 0.4s;
+            transition-timing-function: ease;
+        }
+
+        &__market {
+            $this: &;
+            display: grid;
+            grid-template-rows: 30px 50px 50px 50px 50px 50px;
+
+            &-line {
+                font-size: 14px;
+                line-height: 20px;
+
+                &:first-child {
+                    line-height: 30px;
+
+                    #{$this}-cell {
+
+                        &:nth-child(3) {
+                            justify-content: center;
+                        }
+        
+                        &--sub:first-child::after {
+                            position: relative;
+                            content: "/";
+                        }
+                    }
+                }
+
+                &:not(:first-child) {
+
+                    #{$this}-cell {
+                        align-self: center;
+                        flex-direction: column;
+
+                        #{$this}-cell--sub {
+                            line-height: 20px;
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+        &__nav {
+            border: none;
+            width: 74%;
+
+            &-item {
+                display: none;
+                width: 100%;
+                padding: 17px 0;
+                margin-bottom: 15px;
+    
+                &--selected {
+                    display: block;
+
+                    &::after {
+                        bottom: -7px;
+                    }
+                }
+            }
+        }
+
+        &__caption {
+            padding-right: 10px;
+        }
+    }
+}
