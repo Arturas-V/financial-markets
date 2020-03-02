@@ -50,6 +50,9 @@ class Carousel extends DOMElement {
         }
     }
 
+    /**
+     * Method to re initialise carousel, eg after screens resize
+     */
     reInit(){
         this.setup();
         this.navigate(0);
@@ -107,7 +110,6 @@ class Carousel extends DOMElement {
 
     /**
      * Method to perform navigation to indexed slide
-     * 
      * @param {number} index - slide index
      */
     navigate(index = 0) {
