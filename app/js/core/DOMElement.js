@@ -88,6 +88,7 @@ class DOMElement {
     /**
      * Method to add attribute on to element
      *
+     * @param {Element} node - dom element
      * @param {string} name - attribute name
      * @param {string} value - attribute value
      */
