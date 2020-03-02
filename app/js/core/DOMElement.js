@@ -24,6 +24,7 @@ class DOMElement {
      * 
      * @param {Element} node - parent node
      * @param {Element} child - child element to be appended, prepended etc.
+     * @param {boolean} prepend - flag to indicate if prepend 
      */
     appendChild(node = null, child = null, prepend = false){
         if(node === null || child === null) {return;}
@@ -36,6 +37,7 @@ class DOMElement {
     }
 
     /**
+     * Method to remove element
      * 
      * @param {Element} node - node to be removed
      */
@@ -72,8 +74,8 @@ class DOMElement {
     /**
      * Method to add text
      *
-     * @param {*} node - dom element
-     * @param {*} text - text to be added
+     * @param {Element} node - dom element
+     * @param {string} text - text to be added
      */
     addText(node = null, text = ""){
         if(node === null) {return;}
@@ -98,7 +100,8 @@ class DOMElement {
     /**
      * Method to get elements by classs name(s)
      * 
-     * @param {string} name - class name 
+     * @param {string} name - class name
+     * @return {Element} - target element
      */
     getElementsByClassName(name = "") {
         if(name === "") {return;}
